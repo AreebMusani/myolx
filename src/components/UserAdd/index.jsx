@@ -31,35 +31,47 @@ const UserAdd = (props) => {
         { ID: 7, Label: "Land & Plots" },
     ]
     const Submit = () => {
-        const storageRef = Firebase.storage().ref();
-        const uploadTask = storageRef.child(`images/${imageurl.name}`).put(imageurl);
-        uploadTask.on('state_changed', function (snapshot) {
-            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('Upload is ' + progress + '% done');
-        }, function (error) {
-            console.log(error)
-        }, function () {
-            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                console.log('File available at', downloadURL);
-                const userId = Firebase.auth().currentUser.uid;
-                const currentDate = new Date().toString().split(' ').slice(1, 3).join(' ');
-                const newPostKey = Firebase.database().ref().push().key;
-                const postData = {
-                    uid: newPostKey,
-                    title: title,
-                    price: price,
-                    description: description,
-                    location: location,
-                    published: currentDate,
-                    imageURL: downloadURL,
-                    category: category
-                }
-                var updates = {};
-                updates['posts/' + newPostKey] = postData;
-                updates['user-posts/' + userId + '/' + newPostKey] = postData;
-                Firebase.database().ref().update(updates).then(() => { alert("Item Created succeessfully") }).catch(error => { alert(error) });
+        if (title == '' || category == '' || price == '' || imageurl == '' || description == '' || location == '') {
+            alert("Field's should not be empty");
+        } else {
+            const storageRef = Firebase.storage().ref();
+            const uploadTask = storageRef.child(`images/${imageurl.name}`).put(imageurl);
+            uploadTask.on('state_changed', function (snapshot) {
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+            }, function (error) {
+                console.log(error)
+            }, function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                    console.log('File available at', downloadURL);
+                    const userId = Firebase.auth().currentUser.uid;
+                    const currentDate = new Date().toString().split(' ').slice(1, 3).join(' ');
+                    const newPostKey = Firebase.database().ref().push().key;
+                    const postData = {
+                        uid: newPostKey,
+                        title: title,
+                        price: price,
+                        description: description,
+                        location: location,
+                        published: currentDate,
+                        imageURL: downloadURL,
+                        category: category
+                    }
+                    var updates = {};
+                    updates['posts/' + newPostKey] = postData;
+                    updates['user-posts/' + userId + '/' + newPostKey] = postData;
+                    Firebase.database().ref().update(updates).then(() => { 
+                        setImageurl('');
+                        setLocation('');
+                        setPrice('');
+                        setLocation('');
+                        setDescription('');
+                        setCategory('');
+                        alert("Item Created succeessfully") 
+                    }).catch(error => { alert(error) });
+                });
             });
-        });
+        }
     }
 
     // const Submit = () => {

@@ -19,7 +19,7 @@ function Home() {
             console.log(list)
         }
 
-        Firebase.database().ref('/posts').limitToFirst(limit).once('value', (snapshot) => {
+        Firebase.database().ref('/posts').limitToLast(limit).once('value', (snapshot) => {
             const usersObject = snapshot.val();
             console.log(usersObject);
             console.log(Object.keys(usersObject));
@@ -31,37 +31,9 @@ function Home() {
             console.log(array)
             setData(array)
             setLoading(false)
-            // for(let i=0;i<post.length;i++){
-            //     const dd = usersObject[i];
-            //     console.log(post[i].title)
-            // }
-            // console.log(data)
-            // post.map(key =>{
-            //     console.log(usersObject[key]).title
-            // })
-            // ...usersObject[key],
-            // uid: key,
-
-            // setData(usersList);
-            // setLoading(false)
-            // console.log(list,data)
-            // const datas = Object.values(datasnap.val());
-            // console.log(datas);
-            // const arr = [];
-
-            // setList(array)
-            // for (let i = 0; i < datas.length; i++) {
-            //     console.log(datas[i]);
-            //     arr.push(datas[i]);
-            // }
-            // console.log(Object.values(arr))
-            // Object.keys(arr).map(function(key){console.log(arr[key])})
-
-            // setData(arr)
-            // console.log(data)
+            
         })
         console.log(list, data)
-
     }, [limit])
 
     return (
