@@ -1,0 +1,43 @@
+.PostAdd .img{
+    text-align: center;
+    margin: 25px 0;
+}
+
+.PostAdd img{
+    width: 145px;
+}
+.PostAdd h1{
+    font-size: 30px;
+    margin: 20px 0;
+    color: #002f34;
+}
+.PostForm{
+    margin: 0 auto 60px auto;
+    border: 2px solid #002f34;
+    border-radius: 5px;
+    width: 80%;
+    padding: 15px 10px;
+}
+.postItem{
+    display: flex;
+    justify-content: space-between;
+}
+.postItem label{
+    display: flex;
+    margin-bottom: 0rem;
+    align-items: center;
+    font-weight: 400;
+    font-size: 18px;
+}
+.postItem input,.postItem select,textarea{
+    width: 60%;
+    padding: 8px 6px;
+    border-radius: 7px;
+    margin: 5px 0;
+    border: 1px solid gray;
+}
+
+.postbtn{
+    margin: 10px 0;
+    text-align: right;
+  }
