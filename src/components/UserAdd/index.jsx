@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import {useHistory} from 'react-router-dom';
 import './UserAdd.css'
 import Firebase from '../../Firebase'
 
 const UserAdd = (props) => {
+    const history = useHistory();
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState();
     const [price, setPrice] = useState(0);
@@ -67,7 +69,8 @@ const UserAdd = (props) => {
                         setLocation('');
                         setDescription('');
                         setCategory('');
-                        alert("Item Created succeessfully") 
+                        alert("Item Created succeessfully");
+                        history.push("/"); 
                     }).catch(error => { alert(error) });
                 });
             });
@@ -105,11 +108,11 @@ const UserAdd = (props) => {
             <div className="PostForm">
                 <div className="postItem">
                     <label>Item title</label>
-                    <input type="text" placeholder="Title Name" onChange={e => setTitle(e.target.value)} />
+                    <input type="text" placeholder="Title Name" value={title} onChange={e => setTitle(e.target.value)} />
                 </div>
                 <div className="postItem">
                     <label>Item Category</label>
-                    <select onChange={e => setCategory(e.target.value)}>
+                    <select value={category} onChange={e => setCategory(e.target.value)}>
                         <option value="" selected="true" disabled="disabled">Select Category</option>
                         {nav.map(item => {
                             return (
@@ -120,7 +123,7 @@ const UserAdd = (props) => {
                 </div>
                 <div className="postItem">
                     <label>Item Price</label>
-                    <input type="text" placeholder="Item Price (in pkr)" onChange={e => setPrice(e.target.value)} />
+                    <input type="text" placeholder="Item Price (in pkr)" value={price} onChange={e => setPrice(e.target.value)} />
                 </div>
                 <div className="postItem">
                     <label>Item Image</label>
@@ -129,11 +132,11 @@ const UserAdd = (props) => {
                 </div>
                 <div className="postItem">
                     <label>Item Location</label>
-                    <input type="text" placeholder="Your Location" onChange={e => setLocation(e.target.value)} />
+                    <input type="text" value={location} placeholder="Your Location" onChange={e => setLocation(e.target.value)} />
                 </div>
                 <div className="postItem">
                     <label>Item Description</label>
-                    <textarea cols="30" placeholder="Write Description about your item" onChange={e => setDescription(e.target.value)}></textarea>
+                    <textarea cols="30" value={description} placeholder="Write Description about your item" onChange={e => setDescription(e.target.value)}></textarea>
                 </div>
                 <div className="postbtn">
                     <button className="load-btn" onClick={Submit}>Add Product</button>

@@ -69,13 +69,15 @@ class itemDetails extends React.Component{
                         <button>Chat with seller</button>
                         <div className="contact">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            <p>032616879</p>
+                            {/* <p>032616879</p> */}
+                            <a href="tel:032616879">032616879</a>
                         </div>
                     </div>
                     <div className="div1 location1">
                         <h2>Posted in</h2>
                         <p>{this.state.data.location}</p>
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=33.148%2C73.752&language=en&size=640x256&zoom=15&scale=1&channel=olx-latam-ar-web-dev&key=AIzaSyAChxbDof4fywIkC6U-7MCgXBpUp4t2DiA&signature=5f2fvQmkDX5LClF9wkWwC9AxXek=" alt="google map" />
+                        <img src='https://prod-media-eng.dhakatribune.com/uploads/2019/03/web-google-map-1553422275842.JPG' alt='image map'/>
+                        {/* <img src={"https://maps.googleapis.com/maps/api/staticmap?center=33.148%2C73.752&language=en&size=640x256&zoom=15&scale=1&channel=olx-latam-ar-web-dev&key=AIzaSyAChxbDof4fywIkC6U-7MCgXBpUp4t2DiA&signature=5f2fvQmkDX5LClF9wkWwC9AxXek="} alt="google map" /> */}
                     </div>
                 </div>
             </div>
