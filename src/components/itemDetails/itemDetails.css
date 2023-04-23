@@ -78,11 +78,12 @@
     margin-top: 20px;
     margin-bottom: 5px;
 }
-.contact p{
+.contact a{
     color: #6c99ff;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 700;
+    text-decoration: none;
 }
 .contact i{
     color: #002f34;

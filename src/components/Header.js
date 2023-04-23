@@ -19,6 +19,7 @@ const Header = (props) => {
     const [users, setUser] = useState([])
     const history = useHistory();
     useEffect(() => {
+        
         firebase.auth().onAuthStateChanged(authUser => {
             if(authUser){
                 setUser(authUser);

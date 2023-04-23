@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import AdItem from './AdItem'
 import Firebase from '../Firebase'
 import { configure } from '@testing-library/react'
+
 function Home() {
     const [limit, SetLimit] = useState(12)
     const [list, setList] = useState([])
@@ -62,7 +63,7 @@ function Home() {
                     }
                 </div></div>
                 <div className="bttn">
-                    <button onClick={() => { SetLimit(limit + 2) }} className="load-btn">Load more</button>
+                    <button onClick={() => { SetLimit(limit + 4) }} className="load-btn">Load more</button>
                 </div>
             </div>
             <div className="home-ad">
